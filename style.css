@@ -1,0 +1,236 @@
+/* reset */
+*{
+	margin: 0;
+	padding: 0;
+	border: 0;
+	font: inherit;
+	vertical-align: baseline;
+    box-sizing: border-box;
+    font-family: "Poppins", sans-serif;
+}
+
+html{
+	font-size: 62.5%;
+}
+
+body {
+	line-height: 1;
+    font-size: 1.6rem;
+    min-width: 100vw;
+    min-height: 100vh;
+}
+
+ol, 
+ul {
+	list-style: none;
+}
+
+blockquote, 
+q {
+	quotes: none;
+}
+input,button{outline: none;outline-width: 0px;}
+blockquote:before, 
+blockquote:after,
+q:before, 
+q:after {
+	content: '';
+	content: none;
+}
+
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+
+::-webkit-scrollbar {
+  width: 5px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  box-shadow: inset 0 0 2px #e7e7e7; 
+  border-radius: 10px;
+}
+ 
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #fadd5e; 
+  border-radius: 10px;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #b1b1b1; 
+}
+
+#main{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    height: 100vh;
+    padding: 2rem 1.5rem;
+    background: radial-gradient(circle, rgba(12,3,47,1) 16%, rgba(4,2,25,1) 55%);
+    color: #e7e7e7;
+    overflow: hidden;
+}
+
+.logo{
+    width: 25%;
+}
+
+/*iput styles*/
+.search{
+    width: 50vw;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 2rem 0;
+}
+.search .Input {
+    background: none;
+    padding: 1rem 0.5rem;
+    border-bottom: 0.1rem solid white;
+    height: 2.5rem;
+    margin-right: 1.5rem;
+    color: #fadd5e;
+}
+.search .Input::placeholder {
+    color: #fadd5e;
+}
+.search .Button {
+    position: relative;
+    overflow: hidden;
+    height: 2.5rem;
+    width: 2.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    font-weight: bold;
+    text-shadow: 1px 1px 1px #262626;
+    background: linear-gradient(180deg, rgba(195,10,10,1) 50%, rgba(255,255,255,1) 50%);
+    border-radius: 50%;
+    -webkit-border-radius: 50%;
+    -moz-border-radius: 50%;
+    -ms-border-radius: 50%;
+    -o-border-radius: 50%;
+}
+.search .Button::before {
+  position: absolute;
+  content: '';
+  width: 110%;
+  height: .3rem;
+  background-color: #000;
+}
+.search .Button::after {
+  position: absolute;
+  content: '';
+  width: .3rem;
+  height: .3rem;
+  background-color: #fff;
+  border:.3rem solid #000;
+  border-radius: 50%;
+  -webkit-border-radius: 50%;
+  -moz-border-radius: 50%;
+  -ms-border-radius: 50%;
+  -o-border-radius: 50%;
+}
+/*card styles*/
+.container {
+    display: flex;
+    overflow: hidden auto;
+    width: 100%;
+    flex-wrap: wrap;
+}
+.card {
+  position: relative;
+  display: grid;
+  grid-template-columns: 250px;
+  grid-template-rows: 195px 40px 35px 140px 80px;
+  grid-template-areas: "image" "text" "num" "types" "stats";
+  border-radius: 18px;
+  box-shadow: 5px 5px 15px rgba(0,0,0,0.9);
+  font-family: roboto;
+  text-align: center;
+  
+
+  transition: 0.5s ease;
+  cursor: pointer;
+  margin:30px;
+}
+.card-image {
+  grid-area: image;
+  border-top-left-radius: 15px;
+  border-top-right-radius: 15px;
+  background-size: contain !important;
+}
+.card-name{
+  grid-area: text;
+  text-align: center;
+  margin-top: 1.5rem;
+  font-size: 3.5rem;
+  font-weight: 600;
+  color: #333;
+  text-transform: capitalize;
+}
+.card-num {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    margin: 2rem 0;
+    color: #333;
+    font-size: 1.4rem;
+    font-weight: bold;
+}
+.card-types{
+    grid-area: types;
+    padding-top: 2rem;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+.card-types span{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 3%;
+    color: #ffffff;
+    text-shadow: 1px 1px 1px #262626;
+    border-radius: 1rem;
+    -webkit-border-radius: 1rem;
+    -moz-border-radius: 1rem;
+    -ms-border-radius: 1rem;
+    -o-border-radius: 1rem;
+}
+.card-stats {
+  grid-area: stats; 
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  grid-template-rows: 1fr;
+  border-bottom-left-radius: 15px;
+  border-bottom-right-radius: 15px;
+  background: #00b894;
+}
+.card-stats .stat {
+    padding:10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    color: white;
+    border-left: 1px solid #e7e7e7;
+}
+.card-stats .stat:first-child {
+    border-left-width: 0px;
+}
+.card-stats .value{
+  font-size:22px;
+  font-weight: 500;
+}
+.card-stats .type{
+  font-size:11px;
+  font-weight: 300;
+  text-transform: uppercase;
+}
