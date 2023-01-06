@@ -125,7 +125,7 @@ btn.addEventListener("click", () => {
     for (let i = cards.length - 1; i >= 0; i--) {
         cards[i].remove();
     }
-    getPokeData(input.value)
+    getPokeData(input.value.toLowerCase())
 });
 
 

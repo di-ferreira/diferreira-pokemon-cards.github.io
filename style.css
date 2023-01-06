@@ -80,18 +80,19 @@ table {
     width: 25%;
 }
 
-/*iput styles*/
+/*input styles*/
 .search{
-    width: 50vw;
+    width: 100vw;
     display: flex;
     align-items: center;
     justify-content: center;
-    margin: 2rem 0;
+    padding: 2rem 1rem;
 }
 .search .Input {
     background: none;
     padding: 1rem 0.5rem;
     border-bottom: 0.1rem solid white;
+    width: 50%;
     height: 2.5rem;
     margin-right: 1.5rem;
     color: #fadd5e;
@@ -102,8 +103,8 @@ table {
 .search .Button {
     position: relative;
     overflow: hidden;
-    height: 2.5rem;
-    width: 2.5rem;
+    height: 4rem;
+    width: 4rem;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -111,6 +112,9 @@ table {
     font-weight: bold;
     text-shadow: 1px 1px 1px #262626;
     background: linear-gradient(180deg, rgba(195,10,10,1) 50%, rgba(255,255,255,1) 50%);
+    -webkit-box-shadow: inset 4px -12px 15px 1px rgba(0,0,0,0.75);
+    -moz-box-shadow: inset 4px -12px 15px 1px rgba(0,0,0,0.75);
+    box-shadow: inset 4px -12px 15px 1px rgba(0,0,0,0.75);
     border-radius: 50%;
     -webkit-border-radius: 50%;
     -moz-border-radius: 50%;
@@ -121,16 +125,16 @@ table {
   position: absolute;
   content: '';
   width: 110%;
-  height: .3rem;
+  height: .4rem;
   background-color: #000;
 }
 .search .Button::after {
   position: absolute;
   content: '';
-  width: .3rem;
-  height: .3rem;
+  width: .4rem;
+  height: .4rem;
   background-color: #fff;
-  border:.3rem solid #000;
+  border:.4rem solid #000;
   border-radius: 50%;
   -webkit-border-radius: 50%;
   -moz-border-radius: 50%;
@@ -233,4 +237,28 @@ table {
   font-size:11px;
   font-weight: 300;
   text-transform: uppercase;
+}
+
+@media screen and (max-width:600px) {
+  .logo{
+    width: 50%;
+  }
+  /*input styles*/
+  .search .Input {
+      width: 70%;
+      font-size: 1.8rem;
+  }
+  .search .Button {
+    height: 5rem;
+    width: 5rem;
+  }
+  .search .Button::before {
+    width: 110%;
+    height: .6rem;
+  }
+  .search .Button::after {
+    width: .6rem;
+    height: .6rem;
+    border-width:.6rem;
+  }
 }
