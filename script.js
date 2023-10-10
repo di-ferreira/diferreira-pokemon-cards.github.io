@@ -32,33 +32,52 @@ const addZero = (data, totalZeros) => {
 }
 
 const getPokeData = async (PokeID) => {
-    let cards = cardContainer.getElementsByClassName('card');
+    const PokemonsData = await FetchPokemon(PokeID);
 
-    if (cards.length <= 1) {
-        cardContainer.style.justifyContent = 'center';
-    } else {
-        cardContainer.removeAttribute(style);
+    cardContainer.style.justifyContent = 'center';
+    if (PokemonsData.length > 1) {
+        cardContainer.style.justifyContent = 'flex-start';
     }
 
-    if (PokeID == '') {
-        const finalUrl = url + '?limit=150';
-        const response = await fetch(finalUrl);
-        const data = await response.json();
-        const Pokemons = data.results;
-
-        Pokemons.forEach(Pokemon => {
-            getPokeData(Pokemon.name)
-        })
-    }
-    else {
-        const finalUrl = url + PokeID;
-        const response = await fetch(finalUrl);
-        const data = await response.json();
-        generateCard(data, cardContainer)
-    }
+    PokemonsData.map(pokemon => generateCard(pokemon, cardContainer))
 };
 
-let generateCard = (data, container) => {
+const FetchPokemon = async (PokeID = '') => {
+    let finalURL = url;
+    let Pokemons = [];
+
+    if (PokeID == '') {
+        finalURL = url + '?limit=150';
+
+        const resultAll = await fetch(finalURL);
+
+        const data = await resultAll.json();
+
+        for (const result in data.results) {
+            const urlPokemon = url + (parseInt(result) + 1).toString();
+            const data = await getPokemon(urlPokemon);
+            Pokemons.push(data);
+        }
+
+        Pokemons.sort((a, b) => { return a.id - b.id })
+    }
+    else {
+        finalURL = url + PokeID;
+        const data = await getPokemon(finalURL);
+        Pokemons.push(data);
+    }
+
+    return Pokemons;
+}
+
+
+const getPokemon = async (url) => {
+    const data = await fetch(url);
+    const pokemon = await data.json();
+    return pokemon;
+}
+
+const generateCard = (data, container) => {
     const hp = data.stats[0].base_stat;
     const num = data.id;
     const imgSrc = `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/${data.id}.png`;
